@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
+import java.time.Duration
 
 internal class IndexControllerTest {
     val indexController = IndexController()
@@ -24,5 +25,20 @@ internal class IndexControllerTest {
     @DisplayName("Test exception")
     fun oopsHandler() {
         assertThrows(ValueNotFoundException::class.java) { indexController.oopsHandler() }
+    }
+
+    @Test
+    internal fun testTimeout() {
+        assertTimeout(Duration.ofMillis(100)){
+//            Thread.sleep(1000)
+            print("I got here")
+        }
+    }
+    @Test
+    internal fun testTimeoutPreemptive() {
+        assertTimeoutPreemptively(Duration.ofMillis(100)){
+//            Thread.sleep(1000)
+            print("I got here")
+        }
     }
 }

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assumptions.assumeTrue
 import org.junit.jupiter.api.DisplayName
 import java.time.Duration
 
@@ -40,5 +41,10 @@ internal class IndexControllerTest {
 //            Thread.sleep(1000)
             print("I got here")
         }
+    }
+
+    @Test
+    internal fun testAssumptionTrue() {
+        assumeTrue("GURU".equals("guru",true))
     }
 }

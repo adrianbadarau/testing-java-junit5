@@ -1,11 +1,10 @@
 package guru.springframework.sfgpetclinic.controllers
 
-import org.junit.jupiter.api.BeforeEach
+import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Assumptions.assumeTrue
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.condition.*
 import java.time.Duration
@@ -20,6 +19,7 @@ internal class IndexControllerTest {
     fun index() {
         assertEquals("index", indexController.index())
         assertNotEquals("indexd", indexController.index(), "Wrong view returned")
+        assertThat(indexController.index()).isEqualTo("index")
     }
 
     @Test

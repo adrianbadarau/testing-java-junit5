@@ -22,7 +22,7 @@ internal class IndexControllerTest {
 
     @Test
     @DisplayName("Test exception")
-    fun oupsHandler() {
-        assertTrue("notimplemented".equals(indexController.oupsHandler()))
+    fun oopsHandler() {
+        assertThrows(ValueNotFoundException::class.java) { indexController.oopsHandler() }
     }
 }

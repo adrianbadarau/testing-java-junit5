@@ -7,7 +7,7 @@ class IndexController {
         return "index"
     }
 
-    fun oupsHandler(): String {
-        return "notimplemented"
+    fun oopsHandler(): String {
+        throw ValueNotFoundException()
     }
 }

@@ -1,9 +1,7 @@
 package guru.springframework.sfgpetclinic.model
 
+import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Tag
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertAll
 
 internal class PersonTest : ModelTest {
     @Test
@@ -16,5 +14,12 @@ internal class PersonTest : ModelTest {
                 { assertEquals(person.lastName, "Buck") }
         )
 
+    }
+
+    @RepeatedTest(5, name = "{displayName} {currentRepetition} of {totalRepetitions}")
+    @DisplayName("Person repeated test")
+    fun testRepeatPerson(repetitionInfo: RepetitionInfo){
+        val person = Person(1L, "Joe ${repetitionInfo.currentRepetition}", "Buck")
+        assertEquals("Joe ${repetitionInfo.currentRepetition}", person.firstName)
     }
 }

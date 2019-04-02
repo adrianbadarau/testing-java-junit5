@@ -10,7 +10,7 @@ class Pet : BaseEntity {
     var petType: PetType? = null
     var owner: Owner? = null
     var birthDate: LocalDate? = null
-    var visits: Set<Visit> = HashSet()
+    var visits= mutableSetOf<Visit>()
 
     constructor() {}
 

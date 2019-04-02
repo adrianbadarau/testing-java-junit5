@@ -15,8 +15,8 @@ class VetSDJpaService(private val vetRepository: VetRepository) : VetService {
         return vets
     }
 
-    override fun findById(aLong: Long): Vet {
-        return vetRepository.findById(aLong).orElse(null)
+    override fun findById(id: Long?): Vet {
+        return vetRepository.findById(id!!).orElse(null)
     }
 
     override fun save(`object`: Vet): Vet {
@@ -27,7 +27,7 @@ class VetSDJpaService(private val vetRepository: VetRepository) : VetService {
         vetRepository.delete(`object`)
     }
 
-    override fun deleteById(aLong: Long) {
-        vetRepository.deleteById(aLong)
+    override fun deleteById(id: Long) {
+        vetRepository.deleteById(id)
     }
 }

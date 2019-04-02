@@ -37,7 +37,7 @@ class PetController(private val petService: PetService, private val ownerService
     }
 
     fun processCreationForm(owner: Owner, @Valid pet: Pet, result: BindingResult, model: ModelMap): String {
-        if (StringUtils.length(pet.name) > 0 && pet.isNew && owner.getPet(pet.name, true) != null) {
+        if (StringUtils.length(pet.name) > 0 && pet.isNew && owner.getPet(pet.name!!, true) != null) {
             result.rejectValue("name", "duplicate", "already exists")
         }
         owner.pets.add(pet)

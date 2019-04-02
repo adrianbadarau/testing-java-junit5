@@ -15,8 +15,8 @@ class PetSDJpaService(private val petRepository: PetRepository) : PetService {
         return pets
     }
 
-    override fun findById(aLong: Long): Pet {
-        return petRepository.findById(aLong).orElse(null)
+    override fun findById(id: Long?): Pet {
+        return petRepository.findById(id!!).orElse(null)
     }
 
     override fun save(`object`: Pet): Pet {

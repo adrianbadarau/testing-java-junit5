@@ -1,14 +1,13 @@
 package guru.springframework.sfgpetclinic.model
 
 
-import java.util.HashSet
 
-class Owner(id: Long?, firstName: String, lastName: String) : Person(id, firstName, lastName) {
+class Owner(id: Long?, firstName: String?, lastName: String?) : Person(id, firstName, lastName) {
 
     var address: String? = null
     var city: String? = null
     var telephone: String? = null
-    var pets: Set<Pet> = HashSet()
+    var pets = mutableSetOf<Pet>()
 
     /**
      * Return the Pet with the given name, or null if none found for this Owner.

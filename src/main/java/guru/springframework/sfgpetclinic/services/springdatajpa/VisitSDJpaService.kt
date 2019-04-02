@@ -15,8 +15,8 @@ class VisitSDJpaService(private val visitRepository: VisitRepository) : VisitSer
         return visits
     }
 
-    override fun findById(aLong: Long): Visit {
-        return visitRepository.findById(aLong).orElse(null)
+    override fun findById(id: Long?): Visit {
+        return visitRepository.findById(id!!).orElse(null)
     }
 
     override fun save(`object`: Visit): Visit {
@@ -27,7 +27,7 @@ class VisitSDJpaService(private val visitRepository: VisitRepository) : VisitSer
         visitRepository.delete(`object`)
     }
 
-    override fun deleteById(aLong: Long) {
-        visitRepository.deleteById(aLong)
+    override fun deleteById(id: Long) {
+        visitRepository.deleteById(id)
     }
 }

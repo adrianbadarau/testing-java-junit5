@@ -16,8 +16,8 @@ class SpecialitySDJpaService(private val specialtyRepository: SpecialtyRepositor
         return specialities
     }
 
-    override fun findById(aLong: Long): Speciality {
-        return specialtyRepository.findById(aLong).orElse(null)
+    override fun findById(id: Long?): Speciality {
+        return specialtyRepository.findById(id!!).orElse(null)
     }
 
     override fun save(`object`: Speciality): Speciality {
@@ -28,7 +28,7 @@ class SpecialitySDJpaService(private val specialtyRepository: SpecialtyRepositor
         specialtyRepository.delete(`object`)
     }
 
-    override fun deleteById(aLong: Long) {
-        specialtyRepository.deleteById(aLong)
+    override fun deleteById(id: Long) {
+        specialtyRepository.deleteById(id)
     }
 }

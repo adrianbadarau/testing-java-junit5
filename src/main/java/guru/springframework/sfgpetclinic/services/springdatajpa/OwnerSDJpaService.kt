@@ -8,36 +8,36 @@ import guru.springframework.sfgpetclinic.services.OwnerService
 
 import java.util.HashSet
 
-class OwnerSDJpaService(private val ownerRepository: OwnerRepository, private val petRepository: PetRepository,
-                        private val petTypeRepository: PetTypeRepository) : OwnerService {
+class OwnerSDJpaService(private val ownerRepository: OwnerRepository?, private val petRepository: PetRepository?,
+                        private val petTypeRepository: PetTypeRepository?) : OwnerService {
 
     override fun findByLastName(lastName: String): Owner {
-        return ownerRepository.findByLastName(lastName)
+        return ownerRepository!!.findByLastName(lastName)
     }
 
     override fun findAllByLastNameLike(lastName: String): List<Owner> {
-        return ownerRepository.findAllByLastNameLike(lastName)
+        return ownerRepository!!.findAllByLastNameLike(lastName)
     }
 
     override fun findAll(): Set<Owner> {
         val owners = HashSet<Owner>()
-        ownerRepository.findAll().forEach { owners.add(it) }
+        ownerRepository!!.findAll().forEach { owners.add(it) }
         return owners
     }
 
     override fun findById(id: Long?): Owner {
-        return ownerRepository.findById(id!!).orElse(null)
+        return ownerRepository!!.findById(id!!).orElse(null)
     }
 
     override fun save(`object`: Owner): Owner {
-        return ownerRepository.save(`object`)
+        return ownerRepository!!.save(`object`)
     }
 
     override fun delete(`object`: Owner) {
-        ownerRepository.delete(`object`)
+        ownerRepository!!.delete(`object`)
     }
 
-    override fun deleteById(aLong: Long) {
-        ownerRepository.deleteById(aLong)
+    override fun deleteById(id: Long) {
+        ownerRepository!!.deleteById(id)
     }
 }

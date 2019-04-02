@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 
-@Tag("model")
-internal class OwnerTest {
+internal class OwnerTest : ModelTest {
 
     @Test
     fun dependentAssertions() {

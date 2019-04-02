@@ -16,8 +16,7 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Tag
 
-@Tag("controllers")
-internal class VetControllerTest {
+internal class VetControllerTest : ControllerTest {
 
 
     internal class TestModel : Model {

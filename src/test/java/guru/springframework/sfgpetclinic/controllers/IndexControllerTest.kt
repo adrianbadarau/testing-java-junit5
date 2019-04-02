@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.condition.*
 import java.time.Duration
 
-@Tag("controllers")
-internal class IndexControllerTest {
+internal class IndexControllerTest : ControllerTest {
     val indexController = IndexController()
     val userName = "abadarau"
 
@@ -32,51 +31,52 @@ internal class IndexControllerTest {
 
     @Test
     internal fun testTimeout() {
-        assertTimeout(Duration.ofMillis(100)){
-//            Thread.sleep(1000)
+        assertTimeout(Duration.ofMillis(100)) {
+            //            Thread.sleep(1000)
             print("I got here")
         }
     }
+
     @Test
     internal fun testTimeoutPreemptive() {
-        assertTimeoutPreemptively(Duration.ofMillis(100)){
-//            Thread.sleep(1000)
+        assertTimeoutPreemptively(Duration.ofMillis(100)) {
+            //            Thread.sleep(1000)
             print("I got here")
         }
     }
 
     @Test
     internal fun testAssumptionTrue() {
-        assumeTrue("GURU".equals("guru",true))
+        assumeTrue("GURU".equals("guru", true))
     }
 
     @Test
     @EnabledOnOs(OS.WINDOWS)
-    fun testRunOnlyOnWindows(){
+    fun testRunOnlyOnWindows() {
 
     }
 
     @Test
     @EnabledOnOs(OS.LINUX)
-    fun testRunOnlyOnLinux(){
+    fun testRunOnlyOnLinux() {
 
     }
 
     @Test
     @EnabledOnJre(JRE.JAVA_8)
-    fun testRunOnJdk8(){
+    fun testRunOnJdk8() {
 
     }
 
     @Test
     @EnabledOnJre(JRE.JAVA_11)
-    fun testRunOnJdk11(){
+    fun testRunOnJdk11() {
 
     }
 
     @Test
-    @EnabledIfEnvironmentVariable(named = "JAVA_HOME",matches = ".+")
-    fun testRunOnlyIfJavaHomeIsSet(){
+    @EnabledIfEnvironmentVariable(named = "JAVA_HOME", matches = ".+")
+    fun testRunOnlyIfJavaHomeIsSet() {
 
     }
 }

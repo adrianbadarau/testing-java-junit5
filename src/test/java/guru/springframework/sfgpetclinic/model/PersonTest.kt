@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 
-@Tag("model")
-internal class PersonTest {
+internal class PersonTest : ModelTest {
     @Test
     internal fun groupedAssertions() {
         //given

@@ -9,6 +9,5 @@ interface ControllerTest {
     @JvmDefault
     @BeforeEach
     fun beforeAll(){
-        print("Running from the interface")
     }
 }

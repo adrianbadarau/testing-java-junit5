@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Assumptions.assumeTrue
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.condition.*
 import java.time.Duration
@@ -25,6 +26,7 @@ internal class IndexControllerTest : ControllerTest {
 
     @Test
     @DisplayName("Test exception")
+    @RepeatedTest(10)
     fun oopsHandler() {
         assertThrows(ValueNotFoundException::class.java) { indexController.oopsHandler() }
     }

@@ -6,10 +6,8 @@ import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.ArgumentMatchers
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.Mockito
+import org.mockito.*
+import org.mockito.BDDMockito.*
 import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 import java.util.*
@@ -41,6 +39,14 @@ internal class SpecialitySDJpaServiceTest {
     fun findByIdTest() {
         val speciality = Speciality()
         `when`(specialtyRepository.findById(1L)).thenReturn(Optional.of(speciality))
+        val found = service.findById(1L)
+        assertThat(found).isNotNull
+        verify(specialtyRepository).findById(ArgumentMatchers.anyLong())
+    }
+
+    @Test
+    fun findByIdBDDTest(){
+        given(specialtyRepository.findById(1L)).willReturn(Optional.of(Speciality()))
         val found = service.findById(1L)
         assertThat(found).isNotNull
         verify(specialtyRepository).findById(ArgumentMatchers.anyLong())

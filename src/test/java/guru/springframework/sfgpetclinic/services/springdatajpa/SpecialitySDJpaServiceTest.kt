@@ -2,14 +2,14 @@ package guru.springframework.sfgpetclinic.services.springdatajpa
 
 import guru.springframework.sfgpetclinic.model.Speciality
 import guru.springframework.sfgpetclinic.repositories.SpecialtyRepository
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.extension.ExtendWith
+import org.mockito.ArgumentMatchers
 import org.mockito.InjectMocks
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 import java.util.*
@@ -34,6 +34,7 @@ internal class SpecialitySDJpaServiceTest {
     @Test
     fun delete() {
         service.delete(Speciality())
+        verify(specialtyRepository).delete(any<Speciality>(Speciality::class.java)?:Speciality())
     }
 
     @Test
@@ -42,6 +43,6 @@ internal class SpecialitySDJpaServiceTest {
         `when`(specialtyRepository.findById(1L)).thenReturn(Optional.of(speciality))
         val found = service.findById(1L)
         assertThat(found).isNotNull
-        verify(specialtyRepository).findById(1L)
+        verify(specialtyRepository).findById(ArgumentMatchers.anyLong())
     }
 }

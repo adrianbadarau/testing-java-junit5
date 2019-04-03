@@ -1,6 +1,6 @@
 package guru.springframework.sfgpetclinic.model
 
-class Speciality : BaseEntity {
+open class Speciality : BaseEntity {
     var description: String? = null
 
     constructor() {}

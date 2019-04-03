@@ -1,5 +1,6 @@
 package guru.springframework.sfgpetclinic.model
 
+import guru.springframework.sfgpetclinic.CustomArgsProvider
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
@@ -67,7 +68,13 @@ internal class OwnerTest : ModelTest {
 
     @ParameterizedTest
     @MethodSource(value = ["getArgs"])
-    fun fromMethodTest(state: String, value1: Int, value2: Int) {
+    fun testFromMethodTest(state: String, value1: Int, value2: Int) {
+        println(" $state with values: $value1 and $value2")
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(CustomArgsProvider::class)
+    fun testFromCustomProviderTest(state: String, value1: Int, value2: Int) {
         println(" $state with values: $value1 and $value2")
     }
 
@@ -76,9 +83,9 @@ internal class OwnerTest : ModelTest {
         @JvmStatic
         fun getArgs(): Stream<Arguments> {
             return Stream.of(
-                    Arguments.of("FL",1,2),
-                    Arguments.of("OH",3,4),
-                    Arguments.of("MI",4,5)
+                    Arguments.of("FL", 1, 2),
+                    Arguments.of("OH", 3, 4),
+                    Arguments.of("MI", 4, 5)
             )
         }
     }

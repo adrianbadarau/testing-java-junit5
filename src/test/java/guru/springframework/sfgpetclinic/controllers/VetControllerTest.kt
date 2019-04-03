@@ -6,15 +6,11 @@ import guru.springframework.sfgpetclinic.model.Speciality
 import guru.springframework.sfgpetclinic.model.Vet
 import guru.springframework.sfgpetclinic.services.map.SpecialityMapService
 import guru.springframework.sfgpetclinic.services.map.VetMapService
-import guru.springframework.sfgpetclinic.services.springdatajpa.VetSDJpaService
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Tag
 
 internal class VetControllerTest : ControllerTest {
 

@@ -46,9 +46,13 @@ internal class SpecialitySDJpaServiceTest {
 
     @Test
     fun findByIdBDDTest(){
+        //given
         given(specialtyRepository.findById(1L)).willReturn(Optional.of(Speciality()))
+        //when
         val found = service.findById(1L)
+        //then
         assertThat(found).isNotNull
-        verify(specialtyRepository).findById(ArgumentMatchers.anyLong())
+        then(specialtyRepository).should().findById(ArgumentMatchers.anyLong())
+        then(specialtyRepository).shouldHaveNoMoreInteractions()
     }
 }

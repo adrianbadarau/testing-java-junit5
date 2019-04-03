@@ -1,6 +1,7 @@
 package guru.springframework.sfgpetclinic.model
 
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
@@ -31,7 +32,8 @@ internal class OwnerTest : ModelTest {
         )
     }
 
-    @ParameterizedTest
+    @DisplayName("param test")
+    @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
     @ValueSource(strings = ["Sprig", "Framework", "Guru"])
     fun testValueSource(value: String) {
         println(value)

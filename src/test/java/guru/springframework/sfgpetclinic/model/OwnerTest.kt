@@ -6,10 +6,8 @@ import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.CsvFileSource
-import org.junit.jupiter.params.provider.CsvSource
-import org.junit.jupiter.params.provider.EnumSource
-import org.junit.jupiter.params.provider.ValueSource
+import org.junit.jupiter.params.provider.*
+import java.util.stream.Stream
 
 internal class OwnerTest : ModelTest {
 
@@ -56,13 +54,32 @@ internal class OwnerTest : ModelTest {
         "OH,2,2",
         "MI,3,1"
     ])
-    fun testCsvInput(state: String, value1: Int, value2: String) {
+    fun testCsvInput(state: String, value1: Int, value2: Int) {
         println(" $state with values: $value1 and $value2")
     }
+
     @DisplayName("CSV file test")
     @ParameterizedTest(name = "{displayName} - [{index}] : {arguments}")
     @CsvFileSource(resources = ["/input.csv"], numLinesToSkip = 1)
-    fun testCsvFileInput(state: String, value1: Int, value2: String) {
+    fun testCsvFileInput(state: String, value1: Int, value2: Int) {
         println(" $state with values: $value1 and $value2")
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = ["getArgs"])
+    fun fromMethodTest(state: String, value1: Int, value2: Int) {
+        println(" $state with values: $value1 and $value2")
+    }
+
+
+    companion object {
+        @JvmStatic
+        fun getArgs(): Stream<Arguments> {
+            return Stream.of(
+                    Arguments.of("FL",1,2),
+                    Arguments.of("OH",3,4),
+                    Arguments.of("MI",4,5)
+            )
+        }
     }
 }

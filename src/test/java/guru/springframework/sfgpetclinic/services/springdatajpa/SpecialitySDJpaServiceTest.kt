@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.InjectMocks
 import org.mockito.Mock
+import org.mockito.Mockito.*
 import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockitoExtension::class)
@@ -22,6 +23,9 @@ internal class SpecialitySDJpaServiceTest {
     @Test
     fun deleteById() {
         service.deleteById(1L)
+        service.deleteById(1L)
+        verify(specialtyRepository, atMost(2)).deleteById(1L)
+        verify(specialtyRepository, never()).delete(Speciality())
     }
 
     @Test

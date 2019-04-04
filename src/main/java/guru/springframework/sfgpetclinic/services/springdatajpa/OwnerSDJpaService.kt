@@ -8,7 +8,7 @@ import guru.springframework.sfgpetclinic.services.OwnerService
 
 import java.util.HashSet
 
-class OwnerSDJpaService(private val ownerRepository: OwnerRepository?, private val petRepository: PetRepository?,
+open class OwnerSDJpaService(private val ownerRepository: OwnerRepository?, private val petRepository: PetRepository?,
                         private val petTypeRepository: PetTypeRepository?) : OwnerService {
 
     override fun findByLastName(lastName: String): Owner {

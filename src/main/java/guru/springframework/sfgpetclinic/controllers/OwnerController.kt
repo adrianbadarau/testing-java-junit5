@@ -82,7 +82,7 @@ class OwnerController(private val ownerService: OwnerService) {
     }
 
     companion object {
-        private val VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm"
+        public val VIEWS_OWNER_CREATE_OR_UPDATE_FORM = "owners/createOrUpdateOwnerForm"
     }
 
 }

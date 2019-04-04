@@ -2,7 +2,7 @@ package guru.springframework.sfgpetclinic.model
 
 
 
-class Owner(id: Long?, firstName: String?, lastName: String?) : Person(id, firstName, lastName) {
+open class Owner(id: Long?, firstName: String?, lastName: String?) : Person(id, firstName, lastName) {
 
     var address: String? = null
     var city: String? = null
